@@ -1,15 +1,10 @@
 import streamlit as st
 import time
-
-# Page configuration
 st.set_page_config(
     page_title="Eutrobot Systems",
-    page_icon="🤖",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
-
-# Custom CSS for fade effects and 3D transforms
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
@@ -339,51 +334,34 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Configuration - Easy to update
-CONTACT_EMAIL = "contact@eutrobotsystems.com"  # Update this with your email
-
-# Initialize session state
 if 'current_page' not in st.session_state:
     st.session_state.current_page = 'home'
 if 'selected_prototype' not in st.session_state:
     st.session_state.selected_prototype = None
 
-# Prototype details
 prototype_details = {
     'Eutrobot 1.0': {
         'description': 'Our first generation robot, designed with cutting-edge technology and innovative features.',
         'features': ['Advanced AI Integration', 'Modular Design', 'High Performance', 'User-Friendly Interface'],
-        'image': '🤖'
     },
     'Eutrobot 2.0': {
         'description': 'Enhanced version with improved capabilities and expanded functionality.',
         'features': ['Upgraded AI System', 'Enhanced Mobility', 'Better Sensors', 'Extended Battery Life'],
-        'image': '🚀'
     },
     'Eutrobot 3.0': {
         'description': 'The latest generation featuring state-of-the-art technology and superior performance.',
         'features': ['Next-Gen AI', 'Advanced Navigation', 'Multi-Task Capability', 'Cloud Connectivity'],
-        'image': '🌟'
     },
     'Eutrobot X': {
         'description': 'Experimental model pushing the boundaries of robotic innovation.',
         'features': ['Experimental Features', 'Cutting-Edge Tech', 'Research Platform', 'Future-Ready'],
-        'image': '⚡'
     },
     'Eutrobot Industrial': {
         'description': 'Coming soon - Industrial-grade robot designed for heavy-duty applications.',
         'features': ['Industrial Strength', 'Scalable Solution', 'Enterprise Ready', 'Customizable'],
-        'image': '🏭',
         'coming_soon': True,
-        'contact_email': CONTACT_EMAIL
     }
 }
-
-# Media gallery images (placeholder - you can add actual images)
-media_images = [
-    '📸', '🎥', '📷', '🎬', '📹', '🎞️'
-]
-
 def render_homepage():
     st.markdown("""
     <div class="main-container">
@@ -399,22 +377,18 @@ def render_homepage():
         </div>
     </div>
     """, unsafe_allow_html=True)
-    
-    # Prototypes Section
     st.markdown("""
     <div class="prototypes-section">
         <h2 class="section-title">Our Prototypes</h2>
     </div>
     """, unsafe_allow_html=True)
-    
-    # First row of prototypes
     col1, col2 = st.columns(2)
     
     with col1:
         st.markdown("""
         <div class="prototype-card">
             <div class="prototype-card-wrapper">
-                <div class="prototype-name">🤖 Eutrobot 1.0</div>
+                <div class="prototype-name">Eutrobot 1.0</div>
                 <div class="prototype-description">Our first generation robot with cutting-edge technology</div>
             </div>
         </div>
@@ -428,7 +402,7 @@ def render_homepage():
         st.markdown("""
         <div class="prototype-card">
             <div class="prototype-card-wrapper">
-                <div class="prototype-name">🚀 Eutrobot 2.0</div>
+                <div class="prototype-name">Eutrobot 2.0</div>
                 <div class="prototype-description">Enhanced version with improved capabilities</div>
             </div>
         </div>
@@ -445,7 +419,7 @@ def render_homepage():
         st.markdown("""
         <div class="prototype-card">
             <div class="prototype-card-wrapper">
-                <div class="prototype-name">🌟 Eutrobot 3.0</div>
+                <div class="prototype-name">Eutrobot 3.0</div>
                 <div class="prototype-description">Latest generation with state-of-the-art technology</div>
             </div>
         </div>
@@ -459,7 +433,7 @@ def render_homepage():
         st.markdown("""
         <div class="prototype-card">
             <div class="prototype-card-wrapper">
-                <div class="prototype-name">⚡ Eutrobot X</div>
+                <div class="prototype-name">Eutrobot X</div>
                 <div class="prototype-description">Experimental model pushing boundaries</div>
             </div>
         </div>
@@ -468,8 +442,6 @@ def render_homepage():
             st.session_state.selected_prototype = 'Eutrobot X'
             st.session_state.current_page = 'prototype_detail'
             st.rerun()
-    
-    # Eutrobot Industrial - Centered
     st.markdown("""
     <div style="max-width: 600px; margin: 3rem auto;">
         <div class="prototype-card coming-soon">
@@ -479,9 +451,6 @@ def render_homepage():
                 <div class="prototype-description">Industrial-grade robot for heavy-duty applications</div>
                 <p style="margin-top: 1rem; color: #667eea; font-weight: 600;">
                     Contact us to learn more and help support by funding us
-                </p>
-                <p style="margin-top: 0.5rem; color: #1a1a1a;">
-                    Email: """ + CONTACT_EMAIL + """
                 </p>
             </div>
         </div>
@@ -493,7 +462,6 @@ def render_homepage():
         st.session_state.current_page = 'prototype_detail'
         st.rerun()
     
-    # Team Section
     st.markdown("""
     <div class="team-section">
         <h2 class="section-title">Who is it Built By</h2>
@@ -509,8 +477,6 @@ def render_homepage():
         </div>
     </div>
     """, unsafe_allow_html=True)
-    
-    # Media Section
     st.markdown("""
     <div class="media-section">
         <h2 class="section-title">Media</h2>
@@ -521,8 +487,6 @@ def render_homepage():
         st.rerun()
     
     st.markdown("</div>", unsafe_allow_html=True)
-    
-    # Contact Section
     st.markdown("""
     <div class="contact-section">
         <h2 class="section-title">Contact Us</h2>
@@ -608,11 +572,11 @@ def render_media_gallery():
     # Control buttons
     col_btn1, col_btn2 = st.columns(2)
     with col_btn1:
-        if st.button("⏸️ Pause", key="pause_gallery"):
+        if st.button("Pause", key="pause_gallery"):
             st.session_state.auto_advance = False
             st.rerun()
     with col_btn2:
-        if st.button("▶️ Resume", key="resume_gallery"):
+        if st.button("Resume", key="resume_gallery"):
             st.session_state.auto_advance = True
             st.rerun()
     
